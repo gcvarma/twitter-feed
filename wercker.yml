@@ -1,0 +1,13 @@
+#Use OpenJDK base docker image froim dockerhub and open the application port on the docker container
+box:
+  id: openJDK
+  ports:
+    - $PORT
+#Build our application using Maven. Just as we always have
+build:
+  steps:
+    - install-packages:
+        packages: maven
+    - script:
+        name: maven build
+        code: mvn clean assembly:assembly
