@@ -14,17 +14,17 @@ build:
 box: google/golang
   steps:
   # use the scratch step to build a container from scratch based on the files present
-  - internal/docker-scratch-push:
+    - internal/docker-scratch-push:
       #disable-sync: true  # (for alpine) see this: # http://devcenter.wercker.com/docs/faq/alpine-faq.html
       username: $QUAY_USERNAME
-      password: $QUAY_PASSWORD
-#       cmd: ./app
-      cmd: sh target/bin/start
-      tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
-      ports: $PORT
-      repository: quay.io/gcvarma/twitter-feed
-      registry: https://quay.io/repository
-      working-dir: /pipeline/source
+        password: $QUAY_PASSWORD
+  #       cmd: ./app
+        cmd: sh target/bin/start
+        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+        ports: $PORT
+        repository: quay.io/gcvarma/twitter-feed
+        registry: https://quay.io/repository
+        working-dir: /pipeline/source
 #Push the docker image with our built and tested application to Docker Hub
 # push-release:
 #   steps:
