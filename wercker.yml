@@ -11,7 +11,7 @@ build:
     - script:
         name: maven build
         code: mvn clean assembly:assembly
-push-quay
+push-quay:
 # box: google/golang
   steps:
   # use the scratch step to build a container from scratch based on the files present
